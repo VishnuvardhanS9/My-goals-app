@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = '/api/goals/'
+const API_URL = process.env.REACT_APP_API_URL + '/goals/'
 
 // Create new goal
 const createGoal = async (goalData, token) => {
@@ -11,7 +11,6 @@ const createGoal = async (goalData, token) => {
   }
 
   const response = await axios.post(API_URL, goalData, config)
-
   return response.data
 }
 
@@ -24,7 +23,6 @@ const getGoals = async (token) => {
   }
 
   const response = await axios.get(API_URL, config)
-
   return response.data
 }
 
@@ -37,14 +35,12 @@ const deleteGoal = async (goalId, token) => {
   }
 
   const response = await axios.delete(API_URL + goalId, config)
-
   return response.data
 }
 
-const goalService = {
+export default {
   createGoal,
   getGoals,
   deleteGoal,
 }
 
-export default goalService
