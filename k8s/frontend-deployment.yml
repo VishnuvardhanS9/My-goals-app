@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: goal-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      name: frontend-pod
+      namespace: goal-app
+      labels: 
+        app: frontend
+    spec:
+      containers:
+      - name: goalapp-backend
+        image: vishnuvardhan225/goalapp-frontend:latest
+        ports: 
+        - containerPort: 80

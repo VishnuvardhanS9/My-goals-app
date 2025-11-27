@@ -8,7 +8,7 @@ COPY package*.json ./
 RUN npm install
 
 # Copy all frontend source code
-COPY .env .env
+
 
 COPY . .
 
